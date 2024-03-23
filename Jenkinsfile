@@ -31,6 +31,8 @@ pipeline {
               withSonarQubeEnv('Sonarqube_server Scanner') {
                 sh 'mvn clean package sonar:sonar'
               }
+            }
+        }
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
