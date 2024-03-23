@@ -25,6 +25,12 @@ pipeline {
                 }
             }
         }
+        stage("SonarQube Scanner") {
+            agent any
+            steps {
+              withSonarQubeEnv('SonarQube Scanner') {
+                sh 'mvn clean package sonar:sonar'
+              }
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
